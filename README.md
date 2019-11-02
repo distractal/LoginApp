@@ -6,16 +6,19 @@ I wanted to gain some familiarity with the JAMstack (JavaScript / APIs / Markup)
 
 I am planning on using Gridsome / VUE.js for the FrontEnd, and using that to make API calls to a simple BackEnd HTTP(S) API server written in Rust and serving PostgreSQL.
 
-The framework I had planned to use to serve the API over Rust does not have built-in TLS, and to implement it programatically is kind of outside of the scope of the original project I was intending to make, so what I will likely do instead is set up a simple NGINX reverse proxy with SSL edge termination, and ferry traffic through Cloudflare.
+~~The framework I had planned to use to serve the API over Rust does not have built-in TLS, and to implement it programatically is kind of outside of the scope of the original project I was intending to make, so what I will likely do instead is set up a simple NGINX reverse proxy with SSL edge termination, and ferry traffic through Cloudflare.~~
+
+After further research, I discovered that Rust has a fairly mature TLS implementation in rustls, and some of the Web frameworks (such as Actix) support TLS; so I will attempt to implement without nginx.
 
 Here's the plan:
 - Determine the API layout / scheme
+- Code a skeleton with TLS
 - Code the API / glue with placeholders for database calls
 - Create an Azure VM running Ubuntu
 - Set up the requisite virtual network and network security group in Azure
 - Configure UFW to restrict inbound traffic to http/s access from anywhere, and ssh access ONLY from my IP address
-- Configure NGINX / Cloudflare for SSL edge termination
-- Configure NGINX to redirect http to https
+~~- Configure NGINX / Cloudflare for SSL edge termination~~
+~~- Configure NGINX to redirect http to https~~
 - Configure Cloudflare DNS for distractal.com to point to Azure VM
 - Compile my code on the Azure VM and confirm it works
 - Redirect calls from https://loginapp.distractal.com to https://loginapp/distractal.com/API/whatever/blah/blah
