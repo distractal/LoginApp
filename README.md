@@ -17,8 +17,8 @@ Here's the plan:
 - Create an Azure VM running Ubuntu
 - Set up the requisite virtual network and network security group in Azure
 - Configure UFW to restrict inbound traffic to http/s access from anywhere, and ssh access ONLY from my IP address
-~~- Configure NGINX / Cloudflare for SSL edge termination~~
-~~- Configure NGINX to redirect http to https~~
+- ~~- Configure NGINX / Cloudflare for SSL edge termination~~
+- ~~- Configure NGINX to redirect http to https~~
 - Configure Cloudflare DNS for distractal.com to point to Azure VM
 - Compile my code on the Azure VM and confirm it works
 - Redirect calls from https://loginapp.distractal.com to https://loginapp/distractal.com/API/whatever/blah/blah
